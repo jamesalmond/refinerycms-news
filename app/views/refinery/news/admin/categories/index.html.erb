@@ -1,0 +1,24 @@
+<div id='actions'>
+  <ul>
+    <li>
+    <%= link_to t('refinery.news.admin.items.index.list'), refinery.news_admin_items_path, :class => "go_icon"%>
+    </li>
+    <li>
+      <%= link_to t('.create'), refinery.new_news_admin_category_path, :class => "add_icon" %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <% if @categories.any? %>
+    <%= will_paginate @categories %>
+    <ul>
+      <%= render :partial => "category", :collection => @categories %>
+    </ul>
+    <%= will_paginate @categories %>
+  <% else %>
+    <p>
+      <strong><%= t('.no_categories_yet') %></strong>
+    </p>
+  <% end %>
+</div>
+

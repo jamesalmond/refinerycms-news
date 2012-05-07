@@ -5,9 +5,11 @@ module Refinery
 
       translates :title, :body
 
+      belongs_to :category, :class_name => "Refinery::News::Category"
+
       attr_accessor :locale # to hold temporarily
 
-      attr_accessible :title, :body, :content, :source, :publish_date, :expiration_date
+      attr_accessible :title, :body, :content, :source, :publish_date, :expiration_date, :category_id
       class Translation
         attr_accessible :locale
       end

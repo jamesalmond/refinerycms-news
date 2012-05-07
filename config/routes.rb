@@ -10,6 +10,7 @@ Refinery::Core::Engine.routes.draw do
       scope :path => 'news' do
         root :to => "items#index"
         resources :items, :except => :show
+        resources :categories, :except => :show
       end
     end
   end

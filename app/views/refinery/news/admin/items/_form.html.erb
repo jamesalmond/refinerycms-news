@@ -16,6 +16,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :category_id, "Category" %>
+    <%= f.select :category_id, Refinery::News::Category.select_options %>
+  </div>
+
+  <div class='field'>
     <%= f.label :publish_date %>
     <%= f.datetime_select :publish_date %>
   </div>

@@ -1,0 +1,24 @@
+<%= form_for [refinery, :news, :admin, @category] do |f| %>
+  <%= render :partial => "/refinery/admin/error_messages",
+             :locals => {
+               :object => @category,
+               :include_object_name => true
+             } %>
+
+  <div class='field'>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "larger widest" %>
+  </div>
+
+
+
+  <%= render :partial => "/refinery/admin/form_actions",
+             :locals => {
+               :f => f,
+               :continue_editing => true,
+               :delete_title => t('admin.news.categories.category.delete'),
+               :delete_confirmation => t('shared.admin.delete.message', :title => @category.title)
+             } %>
+
+<% end %>
+
