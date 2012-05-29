@@ -9,7 +9,7 @@ module Refinery
 
       attr_accessor :locale # to hold temporarily
 
-      attr_accessible :title, :body, :content, :source, :publish_date, :expiration_date, :category_id
+      attr_accessible :title, :body, :content, :source, :publish_date, :expiration_date, :category_id, :summary
       class Translation
         attr_accessible :locale
       end
@@ -68,6 +68,10 @@ module Refinery
 
         def latest(limit = 10)
           published.limit(limit)
+        end
+
+        def latest_item
+          latest(1).first
         end
 
         def live
