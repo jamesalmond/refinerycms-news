@@ -6,6 +6,7 @@ module Refinery
       translates :title, :body
 
       belongs_to :category, :class_name => "Refinery::News::Category"
+      belongs_to :image, :class_name => '::Refinery::Image'
 
       attr_accessor :locale # to hold temporarily
 
