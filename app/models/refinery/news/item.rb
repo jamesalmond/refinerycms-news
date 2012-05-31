@@ -83,6 +83,10 @@ module Refinery
           not_expired.where( "publish_date <= ?", Time.now)
         end
 
+        def in_category(category)
+          where(:category_id => category.id)
+        end
+
         # rejects any page that has not been translated to the current locale.
         def translated
           includes(:translations).where(
@@ -99,6 +103,12 @@ module Refinery
         def teaser_enabled_toggle!
           currently = Refinery::Setting.find_or_set(:teasers_enabled, true, :scoping => 'news')
           Refinery::Setting.set(:teasers_enabled, :value => !currently, :scoping => 'news')
+        end
+
+        def for_index(category_id, page)
+          all = published.translated
+          all = all.in_category(News::Category.find(category_id)) unless category_id.blank?
+          all.page(page)
         end
       end
 

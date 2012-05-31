@@ -1,0 +1,3 @@
+<%= form_tag refinery.news_items_path, :id => "news_filter",:method => :get do %>
+  <%= select_tag :category, options_from_collection_for_select(Refinery::News::Category.all, :slug, :title, params[:category]) %>
+<% end %>

@@ -34,7 +34,7 @@ module Refinery
       end
 
       def find_published_news_items
-        @items = Refinery::News::Item.published.translated.page(params[:page])
+        @items = Refinery::News::Item.for_index(params[:category], params[:page])
       end
 
       def find_news_item
